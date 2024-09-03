@@ -7,7 +7,7 @@ position = -1
 session = MessageStore::Postgres::Session.build
 
 loop do
-  read = MessageStore::Postgres::Read.build(stream_name, position: position + 1, batch_size: 10, session:)
+  read = MessageStore::Postgres::Read.build(stream_name, position: position + 1, batch_size: 100, session:)
 
   read.() do |message|
     new_position = message.position
